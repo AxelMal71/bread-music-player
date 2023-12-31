@@ -13,20 +13,12 @@
 </head>
 <body>
     <style>
-        .navitem {
-    display: block;
-    width: 100%;
-    margin: 0;
-}
-        .navigator {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-    height: 100vh; /* Set the height to 100% of the viewport height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+        body {
+            overflow: auto;
+            height: 100%;
+            margin: 0;
+        }
+
         .menu-btn {
             display: none;
             cursor: pointer;
@@ -36,46 +28,52 @@
             list-style-type: none;
             padding: 0;
             text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            z-index: 1;
+            display: none;
+        }
+
+        .navigator.show {
+            display: flex;
         }
 
         .navitem {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .menu-btn {
-                display: block;
-            }
-
-            .navigator {
-                display: none;
-                width: 100%;
-                position: absolute;
-                background-color: #f1f1f1;
-                z-index: 1;
-            }
-
-            .navigator.show {
-                display: block;
-            }
-
-            .navitem {
-                display: block;
-                margin: 10px 0;
-            }
+            display: block;
+            width: 100%;
+            margin: 0;
         }
     </style>
+
+    <script>
+        function toggleMenu() {
+            var navbar = document.getElementById("navbar");
+            navbar.classList.toggle("show");
+            toggleScroll();
+        }
+
+        function toggleScroll() {
+            var body = document.body;
+            body.style.overflow = (body.style.overflow === 'hidden') ? 'auto' : 'hidden';
+        }
+    </script>
 </head>
 <body>
     <div class="menu-btn" onclick="toggleMenu()">Menu</div>
     <ul class="navigator" id="navbar">
-        <li class="navitem navleft"><a href="dashboard.html">Dashboard</a></li>
-        <li class="navitem navleft"><a href="songs.html">Songs</a></li>
-        <li class="navitem navleft"><a href="playlists.html">Playlists</a></li>
-        <li class="navitem navleft"><a href="search.html">Search</a></li>
-        <li class="navitem navright"><a href="settings.html">Settings</a></li>
-        <li class="navitem navright"><a href="about.html">About</a></li>
+        <li class="navitem navleft"><a href="dashboard.html" onclick="toggleMenu()">Dashboard</a></li>
+        <li class="navitem navleft"><a href="songs.html" onclick="toggleMenu()">Songs</a></li>
+        <li class="navitem navleft"><a href="playlists.html" onclick="toggleMenu()">Playlists</a></li>
+        <li class="navitem navleft"><a href="search.html" onclick="toggleMenu()">Search</a></li>
+        <li class="navitem navright"><a href="settings.html" onclick="toggleMenu()">Settings</a></li>
+        <li class="navitem navright"><a href="about.html" onclick="toggleMenu()">About</a></li>
     </ul>
     <ul class="navigator">
         <li class="navitem navleft"><a href="dashboard.html">Dashboard</a></li>
