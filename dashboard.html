@@ -12,6 +12,57 @@
     <meta property="og:image" content="../../img/recyclebin.png">
 </head>
 <body>
+    <style>
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        .navigator {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .navitem {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .navigator {
+                display: none;
+                width: 100%;
+                position: absolute;
+                background-color: #f1f1f1;
+                z-index: 1;
+            }
+
+            .navigator.show {
+                display: block;
+            }
+
+            .navitem {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-btn" onclick="toggleMenu()">Menu</div>
+    <ul class="navigator" id="navbar">
+        <li class="navitem navleft"><a href="dashboard.html">Dashboard</a></li>
+        <li class="navitem navleft"><a href="songs.html">Songs</a></li>
+        <li class="navitem navleft"><a href="playlists.html">Playlists</a></li>
+        <li class="navitem navleft"><a href="search.html">Search</a></li>
+        <li class="navitem navright"><a href="settings.html">Settings</a></li>
+        <li class="navitem navright"><a href="about.html">About</a></li>
+    </ul>
     <ul class="navigator">
         <li class="navitem navleft"><a href="dashboard.html">Dashboard</a></li>
         <li class="navitem navleft"><a href="songs.html">Songs</a></li>
